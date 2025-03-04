@@ -1,0 +1,108 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+:root {
+    --icon-size: 1.5rem;
+}
+
+@theme {
+    --font-sans: 'Lexend', sans-serif;
+    --font-serif: 'Manuale', serif;
+
+    --animate-marquee: marquee 25s linear infinite;
+
+    @keyframes marquee {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+}
+
+@theme {
+    --color-primary-100: #e8f4f2;
+    --color-primary-200: #8fdcc2;
+    --color-primary-300: #4dc5a3;
+    --color-primary-400: #00bda0;
+    --color-primary-500: #00a18f;
+    --color-primary-600: #00928b;
+    --color-primary-700: #006c67;
+    --color-primary: #004643;
+    --color-primary-800: #004643;
+    --color-primary-900: #002b2a;
+
+    --color-secondary-100: #fff3d7;
+    --color-secondary-200: #ffe1b0;
+    --color-secondary-300: #ffdcb0;
+    --color-secondary-400: #fad3ad;
+    --color-secondary-DEFAULT: #a48a73;
+    --color-secondary-500: #d4b393;
+    --color-secondary-600: #a1876f;
+    --color-secondary-700: #87725d;
+    --color-secondary-800: #544639;
+    --color-secondary-900: #201b16;
+
+    --color-accent: #f9bc60;
+    --color-accent-alpha-75: rgba(249, 188, 96, 0.75);
+    --color-accent-alpha-50: rgba(249, 188, 96, 0.5);
+    --color-accent-alpha-25: rgba(249, 188, 96, 0.25);
+    --color-accent-alpha-12: rgba(249, 188, 96, 0.12);
+
+    --color-tertiary: #e16162;
+    --color-accent-contrast: #001e1d;
+    --color-secondary-contrast: #001e1d;
+
+    --color-neutral-100: #e8e4e6;
+    --color-neutral-200: #d1cfd3;
+    --color-neutral-300: #bab8bf;
+    --color-neutral-400: #a3a3a9;
+    --color-neutral-500: #8c8b96;
+    --color-neutral-600: #75747f;
+    --color-neutral-700: #5e5e68;
+    --color-neutral-800: #474752;
+    --color-neutral-900: #30303b;
+}
+
+body {
+    font-family: var(--font-sans), sans-serif;
+    background-color: var(--color-primary);
+    color: var(--color-primary-100);
+    overflow-y: scroll;
+}
+
+@utility heaing {
+    font-family: var(--font-sans), sans-serif;
+    font-weight: 600;
+    font-size: 8rem;
+    color: var(--color-primary-200);
+}
+
+@utility wrapper {
+    padding: 4rem 6rem;
+    margin: 0 auto;
+}
+
+@utility section {
+    padding: 6rem 0;
+}
+
+@utility content-wide {
+    max-width: 80rem;
+}
+
+@utility content-narrow {
+    max-width: 60rem;
+}
+
+@utility icon-btn {
+    @apply p-2;
+    border-radius: 9999px;
+    transition: color 0.2s, background-color 0.2s;
+
+    &:hover {
+        color: var(--color-accent-contrast);
+        background-color: var(--color-accent);
+    }
+}
