@@ -7,7 +7,7 @@
         {href}
         target={external ? '_blank' : '_self'}
         rel={external ? 'noreferrer noopener': ''}
-        class="visited:text-accent text-accent hover:text-accent hover:underline transition-colors"
+        class="text-accent-100 hover:text-accent hover:underline transition-colors inline-flex gap-1 items-center font-medium"
 >
     <slot />
 </a>

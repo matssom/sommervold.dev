@@ -1,12 +1,13 @@
 <script lang="ts">
     import { Step, useTimelinePersentages } from '$lib/components/organisms/chart/timeline';
     import type { BoundsContext, RoundMode, TimelineRecord } from '$lib/components/organisms/chart/types';
-    import { getContext, onMount } from 'svelte';
+		import { getContext, onMount, type Snippet } from 'svelte';
 
     export let
       timelineData: TimelineRecord[],
       step: number = Step.Minute,
       minSteps: number = 1,
+      data: Snippet<[TimelineRecord]>,
       roundMode: RoundMode = 'inclusive';
 
     const {
@@ -26,13 +27,11 @@
 </script>
 
 {#if timelineData.length > 0}
-    <div class="flex flex-col gap-3">
-        {#each timelineData as record}
+    <div class="flex flex-col gap-1 md:gap-3">
+        {#each timelineData as record (record.title)}
             <div class="w-full">
                 <div style={`margin-left:${findStartPercentage(record)}%; width:${findLengthPercentage(record)}%;`}>
-                    <slot {record}>
-                        {record.start}
-                    </slot>
+                    {@render data(record)}
                 </div>
             </div>
         {/each}

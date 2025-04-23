@@ -1,24 +1,32 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { afterNavigate } from '$app/navigation';
 	import NavButton from '../button/index.svelte';
 	import { cleanPath } from '$lib/helpers/paths';
-	import { browser } from '$app/environment';
     import { type Component, untrack } from 'svelte';
 
-	type Button = {
+	type Link = {
 		href: string;
 		icon?: Component;
 		iconOnly?: boolean;
 		text?: string;
-	};
-
-	type Props = {
-		buttons: Button[];
-		compact?: boolean;
 	}
 
-	let { buttons, compact = false }: Props = $props();
+	type Button = {
+		id: string;
+		onclick: () => void;
+        icon?: Component;
+        iconOnly: boolean;
+        text?: string;
+    };
+
+	type Props = {
+		selectedId: string;
+		buttons: Button[];
+	} | {
+		links: Link[];
+    }
+
+	let props: Props = $props();
 
 	interface Refs {
 		[key: string]: HTMLLIElement;
@@ -31,10 +39,9 @@
     let initialized = $state(false);
 
     $effect(() => {
-        if (initialized) return;
         if (highlightRef) {
             initialized = true;
-            const path = cleanPath(page.url.pathname);
+            const path = 'links' in props ? cleanPath(page.url.pathname) : props.selectedId;
             const target = refs[path];
             untrack(() => updateHighlight(target));
         }
@@ -50,11 +57,7 @@
 		highlightRef.style.marginTop = `${targetRef.offsetTop}px`;
 	};
 
-	const handleMouseEnter = (href: string) => {
-		// move in direction a bit
-	};
-
-	const handleMouseDown = (href: string) => {
+	const handleLinkClick = (href: string) => {
 		const newTarget = refs[cleanPath(href)];
 		updateHighlight(newTarget);
 	};
@@ -66,23 +69,34 @@
 
 <svelte:window on:resize={handleResize} />
 
-<nav
-    class="p-2 rounded-full bg-primary-900/70 backdrop-blur-2xl data-[scroll=0]:bg-transparent"
-    data-compact={compact}
->
-    <div class="relative">
-        <div
-            aria-hidden="true"
-            data-initialized={initialized}
-            class="absolute bg-primary-700 data-[initialized=true]:transition-all top-0 left-0 rounded-full"
-            bind:this={highlightRef}
-        ></div>
-        <ul class="dnm-nav-menu">
-            {#each buttons as { text, icon: Icon, href } (href)}
+<div class="relative">
+    <div
+        aria-hidden="true"
+        data-initialized={initialized}
+        class="absolute bg-primary-700 data-[initialized=true]:transition-all top-0 left-0 rounded-full"
+        bind:this={highlightRef}
+    ></div>
+    <ul class="dnm-nav-menu md:gap-1 lg:gap-3">
+        {#if 'buttons' in props}
+            {#each props.buttons as { text, icon: Icon, onclick, id, iconOnly } (id)}
+                <li bind:this={refs[id]}>
+                    <NavButton
+                        iconOnly={iconOnly}
+                        showSelected={!initialized}
+                        {onclick}>
+                        {#if Icon}
+                            <Icon />
+                        {/if}
+                        {text ? text : ''}
+                    </NavButton>
+                </li>
+            {/each}
+        {:else}
+            {#each props.links as { text, icon: Icon, iconOnly, href } (href)}
                 <li bind:this={refs[cleanPath(href)]}>
                     <NavButton
-                        onmousedown={() => handleMouseDown(href)}
-                        iconOnly={!text}
+                        onclick={() => handleLinkClick(href)}
+                        iconOnly={iconOnly}
                         showSelected={!initialized}
                         {href}>
                         {#if Icon}
@@ -92,9 +106,9 @@
                     </NavButton>
                 </li>
             {/each}
-        </ul>
-    </div>
-</nav>
+        {/if}
+    </ul>
+</div>
 
 <style lang="postcss">
     .dnm-nav-menu {
@@ -102,7 +116,6 @@
         display: flex;
         flex-wrap: wrap-reverse;
         justify-content: flex-end;
-        gap: 2rem;
         align-items: center;
         list-style-type: none;
         margin: 0;

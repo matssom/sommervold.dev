@@ -1,5 +1,7 @@
+
 export const cleanPath = (path: string) => {
-    return path.replace(/^\/+|\/+$/g, '');
+    const baseRoute = path.replace(/^\/en/, '');
+    return baseRoute.replace(/^\/+|\/+$/g, '');
 };
 
 export const pathEqual = (path?: string, path2?: string) => {

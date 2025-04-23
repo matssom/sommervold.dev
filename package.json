@@ -37,6 +37,8 @@
 		"vite": "^6.0.0"
 	},
 	"dependencies": {
-		"@inlang/paraglide-sveltekit": "^0.15.5"
+		"@inlang/paraglide-sveltekit": "^0.15.5",
+		"@sveltejs/enhanced-img": "^0.4.4",
+		"dayjs": "^1.11.13"
 	}
 }

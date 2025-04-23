@@ -1,14 +1,13 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { preloadCode } from '$app/navigation';
+		import { afterNavigate, beforeNavigate, preloadCode } from '$app/navigation';
 	import { pathEqual } from '$lib/helpers/paths';
-	import type { Snippet } from 'svelte';
+		import { onMount, type Snippet } from 'svelte';
 
 	type Props = {
 		children: Snippet,
 		iconOnly?: boolean,
 		href?: string | undefined,
-		compact?: boolean,
 		disabled?: boolean,
         showSelected?: boolean,
 		onmouseenter?: (event: MouseEvent) => void,
@@ -20,7 +19,6 @@
 		children,
 		iconOnly = false,
 		href = undefined,
-		compact = false,
 		disabled = false,
         showSelected = true,
 		onmouseenter = () => {
@@ -44,6 +42,15 @@
 
 		onmouseenter(event);
 	};
+
+	let root: HTMLElement | null = null
+    onMount(() => {
+        root=document.getElementsByTagName( 'html' )[0]
+        root?.classList.add('smoothscroll')
+	})
+
+    beforeNavigate(() => {root?.classList.remove('smoothscroll')})
+    afterNavigate(() => {root?.classList.add('smoothscroll')})
 </script>
 
 <!-- button will prefetch on hover -->
@@ -55,8 +62,7 @@
         {onmousedown}
         role="button"
         tabindex="0"
-        data-compact={compact}
-        class="dnm-nav-button dnm-meta font-sans {iconOnly ? 'iconOnly' : ''}"
+        class="dnm-nav-button dnm-meta font-sans text-sm lg:text-base {iconOnly ? 'iconOnly' : ''}"
         class:selected
     >
         {@render children()}
@@ -67,8 +73,7 @@
         onmouseenter={handleMouseEnter}
         {onclick}
         tabindex="0"
-        data-compact={compact}
-        class="dnm-nav-button dnm-meta font-sans {iconOnly ? 'iconOnly' : ''}"
+        class="dnm-nav-button dnm-meta font-sans text-sm lg:text-base {iconOnly ? 'iconOnly' : ''}"
         class:selected
     >
         {@render children()}
@@ -92,32 +97,30 @@
         color: var(--color-primary-100);
         border: none;
         background-color: transparent;
-        padding: .5rem 2rem;
+        padding: .5rem 1rem;
         border-radius: 50rem;
         transition: all 0.2s ease-in-out;
     }
 
     .dnm-nav-button.iconOnly {
         justify-content: center;
-        padding: 1rem;
+        padding: .4rem;
     }
 
-    .dnm-nav-button[data-compact='true'],
-    :global([data-compact='true']) .dnm-nav-button {
-        --icon-size: 2rem;
-        gap: 1rem;
-        padding: 2rem 1rem;
-    }
+    @media (max-width: 768px) {
+        .dnm-nav-button {
+            --icon-size: 1rem;
+            gap: .5rem;
+            padding: .3rem .5rem;
+        }
 
-    .dnm-nav-button[data-compact='true'].iconOnly,
-    :global([data-compact='true']) .dnm-nav-button.iconOnly {
-        padding: 1rem;
+        .dnm-nav-button.iconOnly {
+            padding: .3rem;
+        }
     }
-
 
     .dnm-nav-button:hover:not(:disabled) {
         color: var(--color, var(--color-white));
-        transform: scale(1.03);
     }
 
     .dnm-nav-button.selected:not(:disabled) {

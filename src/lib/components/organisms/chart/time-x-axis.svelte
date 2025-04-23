@@ -24,7 +24,7 @@
 
 </script>
 
-<div class="overflow-hidden relative h-32">
+<div class="overflow-hidden relative h-16">
     {#each years as year (year)}
         {#if getYearPercentage(year, start, end) >= 0 && getYearPercentage(year, start, end) <= 95}
             <div class="absolute font-sans text-primary-300 -translate-x-1/2" style="left: {getYearPercentage(year, start, end)}%">
