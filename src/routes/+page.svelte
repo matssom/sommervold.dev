@@ -41,7 +41,7 @@
         </p>
         <p class="font-sans leading-relaxed text-lg lg:text-xl">
             I voksen alder er det både et plus og et minus. Jeg har lært veldig mye av å lage alt selv, men jeg må klype
-            meg selv litt i øret for å ikke finne opp hjulet på nytt hver gang!
+            meg selv litt i øret for å ikke finne opp hjulet på nytt når målet er verdiskapning!
         </p>
     </div>
 </div>

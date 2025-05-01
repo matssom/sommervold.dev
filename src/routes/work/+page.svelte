@@ -4,6 +4,7 @@
     import { Step } from '$lib/components/organisms/chart/timeline';
     import TimeXAxis from '$lib/components/organisms/chart/time-x-axis.svelte';
     import Link from '$lib/components/atoms/link/link.svelte';
+    import ArrowRight from '$lib/icons/arrow-right.svelte';
 </script>
 
 <div class="hidden md:block text-center text-primary-200 pb-[5rem]">
@@ -13,31 +14,33 @@
 </div>
 
 <div class="wrapper content-wide grid grid-cols-1 md:grid-cols-[23rem_1fr] gap-15 md:gap-7 lg:gap-20 xl:gap-30 items-start">
-    <div class="overflow-hidden rounded-t-full bg-secondary text-primary-900">
+    <div class="overflow-hidden rounded-[999px_999px_20px_20px] bg-secondary-400 text-primary-900">
         <img src="/headshot.jpg" alt="Mats Sommervold in a bussiness suit">
         <div class="px-6 py-8 flex flex-col gap-6">
             <div class="flex flex-col gap-2">
                 <h3 class="font-sans text-secondary-800">Stack på jobben</h3>
                 <div class="flex flex-col gap-8 justify-center">
-                    <div class="current-stack font-serif text-lg flex flex-wrap gap-1">
-                        <p class="rounded-full bg-secondary-800 text-white px-3">Ignition Scada</p>
-                        <p class="rounded-full bg-secondary-800 text-white px-3">Spring</p>
-                        <p class="rounded-full bg-secondary-800 text-white px-3">Java</p>
-                        <p class="rounded-full bg-secondary-800 text-white px-3">MQTT</p>
-                        <p class="rounded-full bg-secondary-800 text-white px-3">Next.js</p>
-                        <p class="rounded-full bg-secondary-800 text-white px-3">SQL Server</p>
+                    <div class="current-stack text-sm md:text-base flex flex-wrap gap-1 md:gap-1.5">
+                        <p class="rounded-full bg-secondary-700 text-secondary-50 px-3">Ignition SCADA</p>
+                        <p class="rounded-full bg-secondary-700 text-secondary-50 px-3">Spring</p>
+                        <p class="rounded-full bg-secondary-700 text-secondary-50 px-3">Java</p>
+                        <p class="rounded-full bg-secondary-700 text-secondary-50 px-3">Docker</p>
+                        <p class="rounded-full bg-secondary-700 text-secondary-50 px-3">MQTT</p>
+                        <p class="rounded-full bg-secondary-700 text-secondary-50 px-3">Next.js</p>
+                        <p class="rounded-full bg-secondary-700 text-secondary-50 px-3">SQL Server</p>
+                        <p class="rounded-full bg-secondary-700 text-secondary-50 px-3">TwinCAT 3.1</p>
                     </div>
                 </div>
             </div>
             <div class="flex flex-col gap-2">
                 <h3 class="font-sans text-secondary-800">Stack hjemme</h3>
                 <div class="flex flex-col gap-8 justify-center">
-                    <div class="current-stack font-serif text-lg flex flex-wrap gap-1">
-                        <p class="rounded-full bg-secondary-800 text-white px-3">.Net Core</p>
-                        <p class="rounded-full bg-secondary-800 text-white px-3">SvelteKit</p>
-                        <p class="rounded-full bg-secondary-800 text-white px-3">Rabbit MQ</p>
-                        <p class="rounded-full bg-secondary-800 text-white px-3">PostgreSQL</p>
-                        <p class="rounded-full bg-secondary-800 text-white px-3">Docker</p>
+                    <div class="current-stack text-sm md:text-base flex flex-wrap gap-1 md:gap-1.5">
+                        <p class="rounded-full bg-secondary-700 text-secondary-50 px-3">.Net Core</p>
+                        <p class="rounded-full bg-secondary-700 text-secondary-50 px-3">SvelteKit</p>
+                        <p class="rounded-full bg-secondary-700 text-secondary-50 px-3">Rabbit MQ</p>
+                        <p class="rounded-full bg-secondary-700 text-secondary-50 px-3">PostgreSQL</p>
+                        <p class="rounded-full bg-secondary-700 text-secondary-50 px-3">Docker</p>
                     </div>
                 </div>
             </div>
@@ -112,6 +115,14 @@
         <p class="font-sans leading-relaxed text-xl">
             Jeg er alltid åpen for å utvide horisonten min. Jeg trives med å prøve, feile og lære, gjerne med litt risiko. Drivkraften min er eierskapet til produktet, og teamet jeg jobber med. Send meg en melding hvis du vil diskutere litt over en tekopp! (da jeg ikke drikker kaffe)
         </p>
+        <div class="flex justify-end">
+            <a href="/contact" class="flex items-center gap-1 text-secondary-900 bg-secondary-300 py-2 px-4 rounded-full group justify-between shadow-lg hover:scale-105 transition-transform active:scale-100">
+                <span>Ta Kontakt</span>
+                <span class="group-hover:translate-x-1 transition-transform">
+                <ArrowRight />
+            </span>
+            </a>
+        </div>
     </div>
 </div>
 

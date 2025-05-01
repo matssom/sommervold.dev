@@ -1,1 +1,1 @@
-<a href="/demo/paraglide">paraglide</a>
+<a href="/src/routes/demo-old/paraglide">paraglide</a>
