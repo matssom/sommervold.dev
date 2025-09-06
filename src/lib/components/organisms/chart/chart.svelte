@@ -8,7 +8,7 @@
 	let minX: number | null = null;
 	let container: HTMLDivElement | null = null;
 	let showArrows = false;
-	let scrollInterval: NodeJS.Timeout | null = null;
+	let scrollInterval: ReturnType<typeof setInterval> | null = null;
 	let isDragging = false;
 	let startX = 0;
 	let scrollLeft = 0;
@@ -36,7 +36,7 @@
 	const startScrolling = (direction: number) => {
 		if (container) {
 			scrollInterval = setInterval(() => {
-				container.scrollBy({ left: direction * 10, behavior: 'auto' });
+				container?.scrollBy({ left: direction * 10, behavior: 'auto' });
 			}, 10);
 		}
 	};
@@ -99,7 +99,22 @@
             on:touchend={stopScrolling}
             on:mousedown={() => startScrolling(-1)}
             on:mouseup={stopScrolling}
-            on:mouseleave={stopScrolling}>
+            on:mouseleave={stopScrolling}
+            on:keydown={(e) => {
+			    if (e.key === 'Enter') {
+					e.preventDefault();
+					container?.scrollBy({ left: -100, behavior: 'smooth' })
+			    }
+                if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+					container?.scrollBy({ left: -100, behavior: 'smooth' })
+                }
+				if (e.key === 'ArrowRight') {
+                    e.preventDefault();
+					container?.scrollBy({ left: 100, behavior: 'smooth' })
+				}
+            }}
+        >
             <ArrowLeft />
         </button>
         <button
@@ -108,17 +123,66 @@
             on:touchend={stopScrolling}
             on:mousedown={() => startScrolling(1)}
             on:mouseup={stopScrolling}
-            on:mouseleave={stopScrolling}>
+            on:mouseleave={stopScrolling}
+            on:keydown={(e) => {
+			    if (e.key === 'Enter') {
+					e.preventDefault();
+					container?.scrollBy({ left: 100, behavior: 'smooth' })
+			    }
+                if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+					container?.scrollBy({ left: -100, behavior: 'smooth' })
+                }
+				if (e.key === 'ArrowRight') {
+                    e.preventDefault();
+					container?.scrollBy({ left: 100, behavior: 'smooth' })
+				}
+            }}
+        >
             <ArrowRight />
         </button>
     {/if}
     <div
         bind:this={container}
+        role="group"
+        aria-label="scrollable chart"
+        tabindex="0"
+        aria-roledescription="scrollable"
         class="scroll-container overflow-x-auto scrollbar-hide md:overflow-x-hidden cursor-grab active:cursor-grabbing"
         on:mousedown={handleMouseDown}
         on:mousemove={handleMouseMove}
         on:mouseup={handleMouseUp}
-        on:mouseleave={handleMouseUp}>
+        on:mouseleave={handleMouseUp}
+        on:keydown={(e) => {
+            if (!container) return;
+            const step = 100;
+            switch (e.key) {
+                case 'ArrowLeft':
+                    e.preventDefault();
+                    container.scrollBy({ left: -step, behavior: 'smooth' });
+                    break;
+                case 'ArrowRight':
+                    e.preventDefault();
+                    container.scrollBy({ left: step, behavior: 'smooth' });
+                    break;
+                case 'Home':
+                    e.preventDefault();
+                    container.scrollTo({ left: 0, behavior: 'smooth' });
+                    break;
+                case 'End':
+                    e.preventDefault();
+                    container.scrollTo({ left: container.scrollWidth, behavior: 'smooth' });
+                    break;
+                case 'PageUp':
+                    e.preventDefault();
+                    container.scrollBy({ left: -container.clientWidth, behavior: 'smooth' });
+                    break;
+                case 'PageDown':
+                    e.preventDefault();
+                    container.scrollBy({ left: container.clientWidth, behavior: 'smooth' });
+                    break;
+            }
+        }}>
         <div class="min-w-[60rem] md:min-w-auto flex flex-col gap-12 px-3 lg:px-6">
             <div style={`width: ${percentageWidth}%`}>
                 <slot />
