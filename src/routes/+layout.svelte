@@ -2,14 +2,12 @@
 	import NavMenu from '$lib/components/organisms/navigation/menu/index.svelte';
 	import NavBar from '$lib/components/organisms/navigation/bar/index.svelte';
 	import Logo from '$lib/icons/logo.svelte';
-	import * as m from '$lib/paraglide/messages';
 	import Footer from '$lib/components/templates/footer/footer.svelte';
 	import '../app.css';
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
 
 	const changeLanguage = () => {
-
 	}
 
 	let { children } = $props();
@@ -26,10 +24,10 @@
 		<div>
 			<NavBar>
 				<NavMenu links={[
-						{ href: '/', text: m.page_about() },
-						{ href: '/work', text: m.page_work() },
-						{ href: '/play', text: m.page_fun() },
-						{ href: '/contact', text: m.page_contact() },
+						{ href: '/', text: "About" },
+						{ href: '/work', text: "Work" },
+						//{ href: '/play', text: m.page_fun() },
+						{ href: '/contact', text: "Contact" },
 			]} />
 			</NavBar>
 		</div>

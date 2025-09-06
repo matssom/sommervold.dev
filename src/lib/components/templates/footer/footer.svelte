@@ -1,5 +1,4 @@
 <script>
-	import * as m from '$lib/paraglide/messages';
 	import GitHub from '$lib/icons/github.svelte';
 	import LinkedIn from '$lib/icons/linkedin.svelte';
 </script>
@@ -15,22 +14,24 @@
 				<ul class="flex flex-col gap-3 row-start-2 col-start-2">
 					<li>
 						<a href="/" class="font-sans hover:underline hover:text-accent">
-							{m.page_about()}
+                            About
 						</a>
 					</li>
 					<li>
 						<a href="/work" class="font-sans hover:underline hover:text-accent">
-							{m.page_work()}
+							Work
 						</a>
 					</li>
+                    <!--
 					<li>
 						<a href="/play" class="font-sans hover:underline hover:text-accent">
 							{m.page_fun()}
 						</a>
 					</li>
+					-->
 					<li>
 						<a href="/contact" class="font-sans hover:underline hover:text-accent">
-							{m.page_contact()}
+							Contact
 						</a>
 					</li>
 				</ul>
