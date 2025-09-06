@@ -1,5 +1,7 @@
 <script lang="ts">
-	function markLoaded(el: HTMLDivElement) {
+	import MapPin from '$lib/icons/map-pin.svelte';
+
+		function markLoaded(el: HTMLDivElement) {
 		const img: HTMLImageElement | null = el.querySelector('img');
 		if (!img) return;
 		if (img.complete) {
@@ -90,7 +92,7 @@
                     length: (new Date().getTime() - new Date().getTime()),
                 },
                 {
-                    title: "twoday IT Minds",
+                    title: "twoday Minds",
                     description: m.timeline_role_software_dev(),
                     start: new Date("2021-09-01").getTime(),
                     length: (new Date("2024-01-31").getTime() - new Date("2021-09-01").getTime()),
@@ -139,6 +141,18 @@
             </span>
             </a>
         </div>
+    </div>
+</div>
+
+<div class="wrapper content-narrow flex flex-col gap-2">
+    <div class="blur-up drop-shadow-xl" style="--bg:url('/snowscape-preview.webp')" use:markLoaded>
+        <enhanced:img class="w-full h-auto" src="./snowscape.webp" alt="Frozen lake at Seiland" />
+    </div>
+    <div class="self-end">
+        <Link external href="https://maps.app.goo.gl/XGz4XAkQYNNrF9v77">
+            <MapPin />
+            <p>Seiland - Juli, 2025</p>
+        </Link>
     </div>
 </div>
 
