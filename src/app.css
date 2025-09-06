@@ -89,7 +89,7 @@ body {
         @apply text-6xl;
     }
 
-    @media (min-width: 1024px) {
+    @media (min-width: 1124px) {
         @apply text-8xl;
     }
 }
