@@ -46,17 +46,17 @@
         </p>
         <ul class="flex flex-col gap-3 row-start-2 col-start-3">
             <li>
-                <a class="flex gap-2 items-center text-accent-100 font-sans hover:underline hover:text-accent" target="_blank" rel="noopener norefferer" href="mailto:mats@sommervold.net">
+                <a tabindex="0" class="flex gap-2 items-center text-accent-100 font-sans hover:underline hover:text-accent" target="_blank" rel="noopener norefferer" href="mailto:mats@sommervold.net">
                     <Email /><span>mats@sommervold.net</span>
                 </a>
             </li>
             <li>
-                <a class="flex gap-2 items-center text-accent-100 font-sans hover:underline hover:text-accent" target="_blank" rel="noopener norefferer" href="https://github.com/matssom">
+                <a tabindex="0" class="flex gap-2 items-center text-accent-100 font-sans hover:underline hover:text-accent" target="_blank" rel="noopener norefferer" href="https://github.com/matssom">
                     <GitHub /><span>GitHub</span>
                 </a>
             </li>
             <li>
-                <a class="flex gap-2 items-center text-accent-100 font-sans hover:underline hover:text-accent" target="_blank" rel="noopener norefferer" href="https://www.linkedin.com/in/mats-sommervold/">
+                <a tabindex="0" class="flex gap-2 items-center text-accent-100 font-sans hover:underline hover:text-accent" target="_blank" rel="noopener norefferer" href="https://www.linkedin.com/in/mats-sommervold/">
                     <LinkedIn /><span>LinkedIn</span>
                 </a>
             </li>

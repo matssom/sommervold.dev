@@ -134,7 +134,7 @@
             {m.work_cta_p()}
         </p>
         <div class="flex justify-end">
-            <a href={localizeHref('/contact')} class="flex items-center gap-1 text-secondary-900 bg-secondary-300 py-2 px-4 rounded-full group justify-between shadow-lg hover:scale-105 transition-transform active:scale-100">
+            <a tabindex="0" href={localizeHref('/contact')} class="flex items-center gap-1 text-secondary-900 bg-secondary-300 py-2 px-4 rounded-full group justify-between shadow-lg hover:scale-105 transition-transform active:scale-100">
                 <span>{m.work_cta_button()}</span>
                 <span class="group-hover:translate-x-1 transition-transform">
                 <ArrowRight />

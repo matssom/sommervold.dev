@@ -90,7 +90,7 @@
 
 <div class="wrapper content-narrow mt-15 md:mt-35">
     <div class="section pt-0 grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-10 items-stretch">
-        <a href={localizeHref('/work')} class="transition-all hover:scale-102 group h-full col-span-2">
+        <a tabindex="0" href={localizeHref('/work')} class="transition-all hover:scale-102 group h-full col-span-2">
             <div class="motion-safe:transition-all rounded-2xl bg-primary-700/70 group-hover:bg-primary-700 flex flex-col gap-4 p-8 h-full justify-between">
                 <div class="flex flex-col gap-4">
                     <h2 class="heading text-white leading-tight text-4xl">{m.about_work_title()}</h2>

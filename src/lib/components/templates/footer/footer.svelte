@@ -9,30 +9,30 @@
 			<div class="section grid grid-cols-1 md:grid-cols-[2fr_minmax(max-content,_150px)_minmax(max-content,_150px)] gap-5">
 				<div class="leading-loose md:row-start-2 col-start-1">
 					<p class="font-sans text-lg">&copy; {new Date().getFullYear()} Mats Sommervold</p>
-					<p class="font-sans text-lg text-primary-200">{m.footer_powered_by_prefix()}<a class="underline" href="/#oreo-and-safari">Oreo & Safari</a></p>
+					<p class="font-sans text-lg text-primary-200">{m.footer_powered_by_prefix()}<a tabindex="0" class="underline" href="/#oreo-and-safari">Oreo & Safari</a></p>
 				</div>
 
 				<h3 class="font-bold font-sans text-lg text-primary-200 md:row-start-1 md:col-start-2">{m.footer_links_title()}</h3>
 				<ul class="flex flex-col gap-3 md:row-start-2 md:col-start-2">
 					<li>
-						<a href={localizeHref('/')} class="font-sans hover:underline hover:text-accent">
+						<a tabindex="0" href={localizeHref('/')} class="font-sans hover:underline hover:text-accent">
                             {m.page_about()}
 						</a>
 					</li>
 					<li>
-						<a href={localizeHref("/work")} class="font-sans hover:underline hover:text-accent">
+						<a tabindex="0" href={localizeHref("/work")} class="font-sans hover:underline hover:text-accent">
 							{m.page_work()}
 						</a>
 					</li>
                     <!--
 					<li>
-						<a href="/play" class="font-sans hover:underline hover:text-accent">
+						<a tabindex="0" href="/play" class="font-sans hover:underline hover:text-accent">
 							{m.page_fun()}
 						</a>
 					</li>
 					-->
 					<li>
-						<a href={localizeHref("/contact")} class="font-sans hover:underline hover:text-accent">
+						<a tabindex="0" href={localizeHref("/contact")} class="font-sans hover:underline hover:text-accent">
 							{m.page_contact()}
 						</a>
 					</li>
@@ -41,12 +41,12 @@
 				<h3 class="md:row-start-1 md:col-start-3 font-bold font-sans text-lg text-primary-200">{m.footer_find_me_title()}</h3>
 				<ul class="flex flex-col gap-3 md:row-start-2 md:col-start-3">
 					<li>
-						<a class="flex gap-2 items-center font-sans hover:underline hover:text-accent" target="_blank" rel="noopener norefferer" href="https://github.com/matssom">
+						<a tabindex="0" class="flex gap-2 items-center font-sans hover:underline hover:text-accent" target="_blank" rel="noopener norefferer" href="https://github.com/matssom">
 							<GitHub /><span>GitHub</span>
 						</a>
 					</li>
 					<li>
-						<a class="flex gap-2 items-center font-sans hover:underline hover:text-accent" target="_blank" rel="noopener norefferer" href="https://www.linkedin.com/in/mats-sommervold/">
+						<a tabindex="0" class="flex gap-2 items-center font-sans hover:underline hover:text-accent" target="_blank" rel="noopener norefferer" href="https://www.linkedin.com/in/mats-sommervold/">
 							<LinkedIn /><span>LinkedIn</span>
 						</a>
 					</li>
