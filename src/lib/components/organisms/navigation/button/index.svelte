@@ -84,6 +84,7 @@
     .dnm-nav-button,
     .dnm-nav-button:link,
     .dnm-nav-button:visited {
+        height: 36px;
         font-weight: 400;
         font-family: var(--font-sans), 'sans-serif';
         text-decoration: none;
@@ -105,6 +106,7 @@
     .dnm-nav-button.iconOnly {
         justify-content: center;
         padding: .4rem;
+        width: 36px;
     }
 
     @media (max-width: 768px) {

@@ -25,8 +25,7 @@
     {/each}
 </div>
 
-<div
-    class="wrapper items-center grid-cols-[1fr_max-content_1fr] fixed top-0 left-0 right-0 grid z-10 lg:gap-4 p-4 lg:py-4">
+<div class="wrapper items-center grid-cols-[1fr_max-content_max-content_1fr] md:grid-cols-[1fr_max-content_1fr] gap-2 fixed top-0 left-0 right-0 grid z-10 lg:gap-4 p-4 lg:py-4">
     <div></div>
     <div>
         <NavBar>
@@ -38,7 +37,7 @@
 			]} />
         </NavBar>
     </div>
-    <div class="hidden md:flex justify-end">
+    <div class="flex justify-end">
         <NavBar>
             <NavMenu selectedId={getLocale()} buttons={[
 					{ onclick: () => setLocale('en'), text: 'EN', iconOnly: true, id: 'en' },

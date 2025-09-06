@@ -10,7 +10,7 @@
 </script>
 
 <nav
-    class="md:p-2 rounded-full md:bg-primary-900/70 backdrop-blur-lg data-[scroll=0]:bg-transparent flex items-center justify-between gap-4 overflow-hidden max-w-full"
+    class="p-1 md:p-1.5 rounded-full bg-primary-900/70 backdrop-blur-lg data-[scroll=0]:bg-transparent flex items-center justify-between gap-4 overflow-hidden max-w-full"
     data-compact={compact}
 >
     {@render children?.()}
