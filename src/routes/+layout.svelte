@@ -1,12 +1,10 @@
 <script lang="ts">
 	import NavMenu from '$lib/components/organisms/navigation/menu/index.svelte';
 	import NavBar from '$lib/components/organisms/navigation/bar/index.svelte';
-	import Logo from '$lib/icons/logo.svelte';
 	import Footer from '$lib/components/templates/footer/footer.svelte';
 	import '../app.css';
 	import { page } from '$app/state';
 		import { getLocale, locales, localizeHref, setLocale } from '$lib/paraglide/runtime';
-    import { goto } from '$app/navigation';
     import { m } from '$lib/paraglide/messages';
 
 	let { children } = $props();
