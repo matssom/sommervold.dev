@@ -26,7 +26,7 @@
 <div class="text-center text-primary-200 flex flex-col gap-10 pb-[5rem]">
     <h1 class="heading flex flex-col gap-3">
         <span>{m.about_title_1()}</span>
-        <span class="block">{m.about_title_2()}</span>
+        <span class="block heading--mobile-small">{m.about_title_2()}</span>
     </h1>
     <p class="font-sans leading-relaxed text-lg sm:text-xl md:text-2xl text-primary-100" >
         <span>{m.about_subtitle_1()}</span>
