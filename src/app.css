@@ -138,3 +138,29 @@ body {
         background-color: var(--color-accent);
     }
 }
+
+/* Simple CSS blur-up placeholder for images */
+.blur-up {
+    position: relative;
+    overflow: hidden;
+}
+html.js .blur-up::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: var(--bg);
+    background-size: cover;
+    background-position: center;
+    filter: blur(20px);
+    transform: scale(1.05);
+    transition: opacity 300ms ease;
+}
+html.js .blur-up.loaded::before {
+    opacity: 0;
+}
+.blur-up > img,
+.blur-up > picture > img {
+    display: block;
+    width: 100%;
+    height: auto;
+}

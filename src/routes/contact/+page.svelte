@@ -1,4 +1,17 @@
 <script>
+    function markLoaded(el) {
+        const img = el.querySelector('img');
+        if (!img) return;
+        if (img.complete) {
+            el.classList.add('loaded');
+            return;
+        }
+        const onLoad = () => {
+            el.classList.add('loaded');
+            img.removeEventListener('load', onLoad);
+        };
+        img.addEventListener('load', onLoad);
+    }
     import Link from '$lib/components/atoms/link/link.svelte';
     import MapPin from '$lib/icons/map-pin.svelte';
     import Email from '$lib/icons/email.svelte';
@@ -15,7 +28,9 @@
 
 <div class="wrapper content-wide grid grid-cols-1 md:grid-cols-[23rem_1fr] gap-15 md:gap-7 lg:gap-20 xl:gap-30 items-start">
     <div class="flex flex-col gap-2 col-start-1 max-w-md justify-self-center">
-        <enhanced:img class="drop-shadow-xl" src="./campfire.webp" alt="Bål ved Lutvann" />
+        <div class="blur-up drop-shadow-xl" style="--bg:url('/campfire-preview.webp')" use:markLoaded>
+            <enhanced:img class="w-full h-auto" src="./campfire.webp" alt="Bål ved Lutvann" />
+        </div>
         <div class="self-end">
             <Link external href="https://maps.app.goo.gl/dzwoP8ggS6WsFDrb8">
                 <MapPin />

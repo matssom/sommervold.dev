@@ -1,4 +1,17 @@
 <script lang="ts">
+	function markLoaded(el: HTMLDivElement) {
+		const img: HTMLImageElement | null = el.querySelector('img');
+		if (!img) return;
+		if (img.complete) {
+			el.classList.add('loaded');
+			return;
+		}
+		const onLoad = () => {
+			el.classList.add('loaded');
+			img.removeEventListener('load', onLoad);
+		};
+		img.addEventListener('load', onLoad);
+	}
 	import Chart from '$lib/components/organisms/chart/chart.svelte';
 	import Timeline from '$lib/components/organisms/chart/timeline.svelte';
     import { Step } from '$lib/components/organisms/chart/timeline';
@@ -17,7 +30,9 @@
 
 <div class="wrapper content-wide grid grid-cols-1 md:grid-cols-[23rem_1fr] gap-15 md:gap-7 lg:gap-20 xl:gap-30 items-start">
     <div class="overflow-hidden rounded-[999px_999px_20px_20px] bg-secondary-400 text-primary-900">
-        <img src="/headshot.jpg" alt={m.work_headshot_alt()}>
+        <div class="blur-up" style="--bg:url('/headshot-preview.webp')" use:markLoaded>
+            <enhanced:img src="./headshot.webp" alt={m.work_headshot_alt()} />
+        </div>
         <div class="px-6 py-8 flex flex-col gap-6">
             <div class="flex flex-col gap-2">
                 <h3 class="font-sans text-secondary-800">{m.work_sidebar_job_stack_title()}</h3>

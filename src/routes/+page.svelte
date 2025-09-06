@@ -5,6 +5,22 @@
     import Link from '$lib/components/atoms/link/link.svelte';
     import {localizeHref} from '$lib/paraglide/runtime';
     import {m} from '$lib/paraglide/messages';
+
+    function markLoaded(el: HTMLDivElement) {
+        // Add the 'loaded' class when the nested image finishes loading
+        const img: HTMLImageElement | null = el.querySelector('img');
+        if (!img) return;
+        if (img.complete) {
+            // If already cached/loaded, mark immediately
+            el.classList.add('loaded');
+            return;
+        }
+        const onLoad = () => {
+            el.classList.add('loaded');
+            img.removeEventListener('load', onLoad);
+        };
+        img.addEventListener('load', onLoad);
+    }
 </script>
 
 <div class="text-center text-primary-200 flex flex-col gap-10 pb-[5rem]">
@@ -19,7 +35,9 @@
 </div>
 
 <div class="wrapper max-w-screen-xl flex flex-col gap-2">
-    <enhanced:img class="drop-shadow-xl" src="./borgefjell.webp" alt="Mats på tur i Børgefjell" />
+    <div class="blur-up drop-shadow-xl" style="--bg:url('./borgefjell-preview.webp')" use:markLoaded>
+        <enhanced:img class="w-full h-auto" src="./borgefjell.webp" alt="Mats på tur i Børgefjell" />
+    </div>
     <div class="self-end">
         <Link external href="https://maps.app.goo.gl/uZpxYzGC52S6VvxZA">
             <MapPin />
@@ -51,14 +69,18 @@
 
 <div class="wrapper content-narrow flex flex-col sm:flex-row gap-5 md:gap-10 pt-20 md:pt-25" id="oreo-and-safari">
     <div class="flex flex-col gap-2">
-        <enhanced:img class="drop-shadow-xl" src="./oreo.webp" alt="Mats på tur i Børgefjell" />
+        <div class="blur-up drop-shadow-xl" style="--bg:url('./oreo-preview.webp')" use:markLoaded>
+            <enhanced:img class="w-full h-auto" src="./oreo.webp" alt="Oreo" />
+        </div>
         <div class="self-end flex items-center gap-1 text-accent-100">
             <PawPrint />
             <p>Oreo, 2024</p>
         </div>
     </div>
     <div class="flex flex-col gap-2">
-        <enhanced:img class="drop-shadow-xl" src="./safari.webp" alt="Mats på tur i Børgefjell" />
+        <div class="blur-up drop-shadow-xl" style="--bg:url('./safari-preview.webp')" use:markLoaded>
+            <enhanced:img class="w-full h-auto" src="./safari.webp" alt="Safari" />
+        </div>
         <div class="self-end flex gap-1 items-center text-accent-100">
             <PawPrint />
             <p>Safari, 2024</p>

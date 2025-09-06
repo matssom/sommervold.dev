@@ -16,6 +16,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Crimson+Pro:ital,wght@0,200..900;1,200..900&display=swap"
         rel="stylesheet">
+    <script>document.documentElement.classList.add('js');</script>
 </svelte:head>
 
 <div style="display:none">
