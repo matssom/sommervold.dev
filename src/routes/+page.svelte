@@ -35,7 +35,7 @@
 </div>
 
 <div class="wrapper max-w-screen-xl flex flex-col gap-2">
-    <div class="blur-up drop-shadow-xl" style="--bg:url('./borgefjell-preview.webp')" use:markLoaded>
+    <div class="blur-up drop-shadow-xl" style="--bg:url('/borgefjell-preview.webp')" use:markLoaded>
         <enhanced:img class="w-full h-auto" src="./borgefjell.webp" alt="Mats på tur i Børgefjell" />
     </div>
     <div class="self-end">
@@ -69,7 +69,7 @@
 
 <div class="wrapper content-narrow flex flex-col sm:flex-row gap-5 md:gap-10 pt-20 md:pt-25" id="oreo-and-safari">
     <div class="flex flex-col gap-2">
-        <div class="blur-up drop-shadow-xl" style="--bg:url('./oreo-preview.webp')" use:markLoaded>
+        <div class="blur-up drop-shadow-xl" style="--bg:url('/oreo-preview.webp')" use:markLoaded>
             <enhanced:img class="w-full h-auto" src="./oreo.webp" alt="Oreo" />
         </div>
         <div class="self-end flex items-center gap-1 text-accent-100">
@@ -78,7 +78,7 @@
         </div>
     </div>
     <div class="flex flex-col gap-2">
-        <div class="blur-up drop-shadow-xl" style="--bg:url('./safari-preview.webp')" use:markLoaded>
+        <div class="blur-up drop-shadow-xl" style="--bg:url('/safari-preview.webp')" use:markLoaded>
             <enhanced:img class="w-full h-auto" src="./safari.webp" alt="Safari" />
         </div>
         <div class="self-end flex gap-1 items-center text-accent-100">
