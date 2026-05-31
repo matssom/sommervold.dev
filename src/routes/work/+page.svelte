@@ -89,7 +89,7 @@
                     title: "Nordic Booster",
                     description: m.timeline_role_senior_dev(),
                     start: new Date("2024-02-01").getTime(),
-                    length: (new Date().getTime() - new Date().getTime()),
+                    length: (new Date().getTime() - new Date("2024-02-01").getTime()),
                 },
                 {
                     title: "twoday Minds",
